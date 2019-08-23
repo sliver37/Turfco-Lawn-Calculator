@@ -1,24 +1,28 @@
 <template>
     <div>
         <ul class="selection-wrap list-unstyled">
-            <li @click="control = 'square'" class="selection-item square" :class="[control === 'square' ? 'active' : '']"><span /></li>
-            <li @click="control = 'triangle'" class="selection-item triangle" :class="[control === 'triangle' ? 'active' : '']"><span /></li>
-            <li @click="control = 'circle'" class="selection-item circle" :class="[control === 'circle' ? 'active' : '']"><span /></li>
-            <li @click="control = 'arch'" class="selection-item arch" :class="[control === 'arch' ? 'active' : '']"><span /></li>
+            <li @click="changeSelection('square')" class="selection-item square" :class="[control === 'square' ? 'active' : '']"><span /></li>
+            <li @click="changeSelection('triangle')" class="selection-item triangle" :class="[control === 'triangle' ? 'active' : '']"><span /></li>
+            <li @click="changeSelection('circle')" class="selection-item circle" :class="[control === 'circle' ? 'active' : '']"><span /></li>
+            <li @click="changeSelection('arch')" class="selection-item arch" :class="[control === 'arch' ? 'active' : '']"><span /></li>
         </ul>
         <div class="control-wrap">
-            <div v-if="control === 'square' || control === 'triangle'" class="simple-calc">
+            <div v-if="control === 'square' && !localTotal  || control === 'triangle' && !localTotal" class="simple-calc">
                 <input name="width" v-model="width" />
                 <input name="height" v-model="height" />
                 <a @click.prevent="calcSimple" href="#">Add to Total</a>
             </div>
-            <div v-if="control === 'circle'" class="diameter-calc">
+            <div v-if="control === 'circle' && !localTotal" class="diameter-calc">
                 <input name="diameter" v-model="diameter" />
                 <a @click.prevent="calcDiam" href="#">Add to Total</a>
             </div>
-            <div v-if="control === 'arch'" class="radius-calc">
+            <div v-if="control === 'arch' && !localTotal" class="radius-calc">
                 <input name="radius" v-model="radius" />
                 <a @click.prevent="calcRad" href="#">Add to Total</a>
+            </div>
+            <div v-if="localTotal" class="totalBar">
+                <span v-text="localTotal" />
+                <a href="#" @click.prevent="reCalc">Re-calculate</a>
             </div>
         </div>
     </div>
@@ -28,6 +32,7 @@
 export default {
     data: function() {
         return {
+            localTotal: 0,
             width: 0,
             height: 0,
             diameter: 0,
@@ -44,8 +49,7 @@ export default {
             if(this.checkNum(width) && this.checkNum(height)){
                 let res = parseFloat(width*height); // calculate result
                 this.$emit('calc', res)
-                this.width = 0;
-                this.height = 0;
+                this.localTotal = res;
             }
             else{
                 alert('Please give numeric value');
@@ -58,7 +62,7 @@ export default {
             if(this.checkNum(diameter)){
                 let res = parseFloat(pie*(diameter/2))
                 this.$emit('calc', res)
-                this.diameter = 0;
+                this.localTotal = res;
             }
             else{
                 alert('Please give numeric value');
@@ -71,7 +75,7 @@ export default {
             if(this.checkNum(radius)){
                 let res = parseFloat((pie*(radius*radius))/2); // calculate result
                 this.$emit('calc', res)
-                this.radius = 0;
+                this.localTotal = res;
             }
             else{
                 alert('Please give numeric value');
@@ -79,7 +83,27 @@ export default {
         },
         checkNum(num) {
             return num && !isNaN(num)
-        }
+        },
+        reCalc() {
+            this.$emit('reCalc', this.localTotal);
+            this.localTotal = 0;
+        },
+        changeSelection(shape) {
+            if (this.localTotal) {
+                let prompt = window.confirm('Are you sure? This will remove this shapes calculation');          
+                if (prompt) {
+                    this.control = shape
+                    this.reCalc()
+                    this.width = 0;
+                    this.height = 0;
+                    this.diameter = 0;
+                    this.radius = 0;
+                } 
+            } else {
+                this.control = shape    
+            }  
+                       
+        } 
     },
     props: {
         name: String,
@@ -127,7 +151,7 @@ export default {
     color: white;
     background: green;
     padding: 12px 40px;
-    margin-left: 20px
+    margin-left: 20px;
 }
 
 .selection-item.active {
