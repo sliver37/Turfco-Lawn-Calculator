@@ -3,12 +3,11 @@
     <div class="calculator-wrap">
       <div class="block-wrap" v-for="(calcblock, index) in calcblocks" :key="calcblock.name">
         <a href="#" @click.prevent="removeShape(index)">Remove Shape</a> 
-        <calc-block @calc="calc" :index="index" />        
+        <calc-block @calc="calc" :name="calcblock.default" />        
       </div>
       <input disabled class="total" v-model="total" />
       <a href="#" @click.prevent="addShape">Add Shape</a>
-    </div>
-    
+    </div>    
   </div>
 </template>
 
@@ -21,10 +20,10 @@ export default {
     return {
       total: 100,
       calcblocks: [
-        { name: "first" },
-        { name: "second" },
-        { name: "third" },
-        { name: "fourth" }
+        { name: "first", default: 'square' },
+        { name: "second", default: 'triangle' },
+        { name: "third", default: 'circle' },
+        { name: "fourth", default: 'arch' }
       ]
     }
   },
@@ -36,6 +35,9 @@ export default {
       this.calcblocks.push({
         name: 'extra'
       })
+    },
+    removeShape(index) {
+      this.calcblocks.splice(index, 1)
     },
     getTotal() {
       return this.total;
@@ -70,5 +72,17 @@ export default {
   font-size: 20px;
   padding: 2rem;
   background: red;
+}
+
+.calculator-wrap {
+    max-width: 1170px;
+    margin: 0 auto;  
+}
+
+.block-wrap {
+  padding: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 </style>
