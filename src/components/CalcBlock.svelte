@@ -1,5 +1,5 @@
 <div class="w-full">
-	<h2 class="flex"><span class="step-number">{parseInt(name)}.</span><span class="step-text">Choose your {name} shape to calculate.</span> <a class="delete-shape" href="#" on:click|preventDefault="{removeShape}">X</a></h2> 
+	<h2 class="flex"><span class="step-number">{stepNumber}.</span><span class="step-text">Choose your {name} shape to calculate.</span> <a class="delete-shape" href="#" on:click|preventDefault="{removeShape}">X</a></h2> 
 
     <ul class="selection-wrap list-unstyled">
         <li on:click|preventDefault="{() => changeSelection('square')}" class="selection-item square {control === 'square' ? 'active' : ''}">
@@ -60,6 +60,8 @@ import {onMount, createEventDispatcher} from 'svelte';
     export let name;
     export let defaultShape;
 
+    $: stepNumber = parseInt(name);
+
     let localTotal = 0;
     let width = 0;
     let height = 0;
@@ -116,8 +118,12 @@ import {onMount, createEventDispatcher} from 'svelte';
     }
 
     const removeShape = () => {
-        reCalc();
-        dispatch('removeshape')        
+        let prompt = window.confirm(`Are you sure you want to remove shape ${stepNumber}?`);          
+        
+        if (prompt) {
+            reCalc();
+            dispatch('removeshape')    
+        }    
     }
 
     const changeSelection = (shape) => {

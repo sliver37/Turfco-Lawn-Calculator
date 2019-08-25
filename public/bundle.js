@@ -1,2 +1,1371 @@
-var app=function(){"use strict";function t(){}function e(t){return t()}function n(){return Object.create(null)}function l(t){t.forEach(e)}function c(t){return"function"==typeof t}function a(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}function r(t,e){t.appendChild(e)}function o(t,e,n){t.insertBefore(e,n||null)}function i(t){t.parentNode.removeChild(t)}function s(t){return document.createElement(t)}function u(t){return document.createTextNode(t)}function d(){return u(" ")}function f(t,e,n,l){return t.addEventListener(e,n,l),()=>t.removeEventListener(e,n,l)}function p(t){return function(e){return e.preventDefault(),t.call(this,e)}}function h(t,e,n){null==n?t.removeAttribute(e):t.setAttribute(e,n)}function m(t,e){e=""+e,t.data!==e&&(t.data=e)}function v(t,e){(null!=e||t.value)&&(t.value=e)}let g;function k(t){g=t}function _(t){(function(){if(!g)throw new Error("Function called outside component initialization");return g})().$$.on_mount.push(t)}function $(){const t=g;return(e,n)=>{const l=t.$$.callbacks[e];if(l){const c=function(t,e){const n=document.createEvent("CustomEvent");return n.initCustomEvent(t,!1,!1,e),n}(e,n);l.slice().forEach(e=>{e.call(t,c)})}}}const b=[],x=[],y=[],w=[],T=Promise.resolve();let S=!1;function C(t){y.push(t)}function E(){const t=new Set;do{for(;b.length;){const t=b.shift();k(t),q(t.$$)}for(;x.length;)x.pop()();for(let e=0;e<y.length;e+=1){const n=y[e];t.has(n)||(n(),t.add(n))}y.length=0}while(b.length);for(;w.length;)w.pop()();S=!1}function q(t){t.fragment&&(t.update(t.dirty),l(t.before_update),t.fragment.p(t.dirty,t.ctx),t.dirty=null,t.after_update.forEach(C))}const M=new Set;let A;function N(t,e){t&&t.i&&(M.delete(t),t.i(e))}function L(t,e,n,l){if(t&&t.o){if(M.has(t))return;M.add(t),A.c.push(()=>{M.delete(t),l&&(n&&t.d(1),l())}),t.o(e)}}function H(t,e){L(t,1,1,()=>{e.delete(t.key)})}function F(t,n,a){const{fragment:r,on_mount:o,on_destroy:i,after_update:s}=t.$$;r.m(n,a),C(()=>{const n=o.map(e).filter(c);i?i.push(...n):l(n),t.$$.on_mount=[]}),s.forEach(C)}function O(t,e){t.$$.fragment&&(l(t.$$.on_destroy),t.$$.fragment.d(e),t.$$.on_destroy=t.$$.fragment=null,t.$$.ctx={})}function P(t,e){t.$$.dirty||(b.push(t),S||(S=!0,T.then(E)),t.$$.dirty=n()),t.$$.dirty[e]=!0}function R(e,c,a,r,o,i){const s=g;k(e);const u=c.props||{},d=e.$$={fragment:null,ctx:null,props:i,update:t,not_equal:o,bound:n(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(s?s.$$.context:[]),callbacks:n(),dirty:null};let f=!1;var p;d.ctx=a?a(e,u,(t,n)=>{d.ctx&&o(d.ctx[t],d.ctx[t]=n)&&(d.bound[t]&&d.bound[t](n),f&&P(e,t))}):u,d.update(),f=!0,l(d.before_update),d.fragment=r(d.ctx),c.target&&(c.hydrate?d.fragment.l((p=c.target,Array.from(p.childNodes))):d.fragment.c(),c.intro&&N(e.$$.fragment),F(e,c.target,c.anchor),E()),k(s)}class j{$destroy(){O(this,1),this.$destroy=t}$on(t,e){const n=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return n.push(e),()=>{const t=n.indexOf(e);-1!==t&&n.splice(t,1)}}$set(){}}function B(t){var e,n,c,a,u,m,g,k,_;return{c(){e=s("div"),n=s("input"),c=d(),(a=s("span")).textContent="X",u=d(),m=s("input"),g=d(),(k=s("a")).textContent="Add to Total",h(n,"name","width"),h(a,"class","divider svelte-rtfck8"),h(m,"name","height"),h(k,"class","button"),h(k,"href","#"),h(e,"class","flex items-center simple-calc"),_=[f(n,"input",t.input0_input_handler),f(m,"input",t.input1_input_handler),f(k,"click",p(t.calcSimple))]},m(l,i){o(l,e,i),r(e,n),v(n,t.width),r(e,c),r(e,a),r(e,u),r(e,m),v(m,t.height),r(e,g),r(e,k)},p(t,e){t.width&&n.value!==e.width&&v(n,e.width),t.height&&m.value!==e.height&&v(m,e.height)},d(t){t&&i(e),l(_)}}}function D(t){var e,n,c,a,u;return{c(){e=s("div"),n=s("input"),c=d(),(a=s("a")).textContent="Add to Total",h(n,"name","diameter"),h(a,"class","button"),h(a,"href","#"),h(e,"class","flex items-center diameter-calc"),u=[f(n,"input",t.input_input_handler),f(a,"click",p(t.calcDiam))]},m(l,i){o(l,e,i),r(e,n),v(n,t.diameter),r(e,c),r(e,a)},p(t,e){t.diameter&&n.value!==e.diameter&&v(n,e.diameter)},d(t){t&&i(e),l(u)}}}function I(t){var e,n,c,a,u;return{c(){e=s("div"),n=s("input"),c=d(),(a=s("a")).textContent="Add to Total",h(n,"name","radius"),h(a,"class","button"),h(a,"href","#"),h(e,"class","flex items-center radius-calc"),u=[f(n,"input",t.input_input_handler_1),f(a,"click",p(t.calcRad))]},m(l,i){o(l,e,i),r(e,n),v(n,t.radius),r(e,c),r(e,a)},p(t,e){t.radius&&n.value!==e.radius&&v(n,e.radius)},d(t){t&&i(e),l(u)}}}function X(t){var e,n,l,c,a,v,g,k;return{c(){e=s("div"),n=s("span"),l=u(t.localTotal),c=u("m"),(a=s("sup")).textContent="2",v=d(),(g=s("a")).textContent="Re-calculate",h(n,"class","local-total svelte-rtfck8"),h(g,"class","button"),h(g,"href","#"),h(e,"v-if","localTotal"),h(e,"class","flex items-center totalBar"),k=f(g,"click",p(t.reCalc))},m(t,i){o(t,e,i),r(e,n),r(n,l),r(n,c),r(n,a),r(e,v),r(e,g)},p(t,e){t.localTotal&&m(l,e.localTotal)},d(t){t&&i(e),k()}}}function z(e){var n,c,a,v,g,k,_,$,b,x,y,w,T,S,C,E,q,M,A,N,L,H,F,O,P,R,j,z,U,V,G,J,K,Q,W=parseInt(e.name)+"",Y=("square"===e.control&&!e.localTotal||"triangle"===e.control&&!e.localTotal)&&B(e),Z="circle"===e.control&&!e.localTotal&&D(e),tt="arch"===e.control&&!e.localTotal&&I(e),et=e.localTotal&&X(e);return{c(){n=s("div"),c=s("h2"),a=s("span"),v=u(W),g=u("."),k=s("span"),_=u("Choose your "),$=u(e.name),b=u(" shape to calculate."),x=d(),(y=s("a")).textContent="X",w=d(),T=s("ul"),S=s("li"),(C=s("div")).innerHTML='<span class="svelte-rtfck8"></span>',q=d(),M=s("li"),(A=s("div")).innerHTML='<span class="svelte-rtfck8"></span>',L=d(),H=s("li"),(F=s("div")).innerHTML='<span class="svelte-rtfck8"></span>',P=d(),R=s("li"),(j=s("div")).innerHTML='<span class="svelte-rtfck8"></span>',U=d(),V=s("div"),Y&&Y.c(),G=d(),Z&&Z.c(),J=d(),tt&&tt.c(),K=d(),et&&et.c(),h(a,"class","step-number svelte-rtfck8"),h(k,"class","step-text"),h(y,"class","delete-shape svelte-rtfck8"),h(y,"href","#"),h(c,"class","flex"),h(C,"class","shape-inner svelte-rtfck8"),h(S,"class",E="selection-item square "+("square"===e.control?"active":"")+" svelte-rtfck8"),h(A,"class","shape-inner svelte-rtfck8"),h(M,"class",N="selection-item triangle "+("triangle"===e.control?"active":"")+" svelte-rtfck8"),h(F,"class","shape-inner svelte-rtfck8"),h(H,"class",O="selection-item circle "+("circle"===e.control?"active":"")+" svelte-rtfck8"),h(j,"class","shape-inner svelte-rtfck8"),h(R,"class",z="selection-item arch "+("arch"===e.control?"active":"")+" svelte-rtfck8"),h(T,"class","selection-wrap list-unstyled svelte-rtfck8"),h(V,"class","control-wrap svelte-rtfck8"),h(n,"class","w-full"),Q=[f(y,"click",p(e.removeShape)),f(S,"click",p(e.click_handler)),f(M,"click",p(e.click_handler_1)),f(H,"click",p(e.click_handler_2)),f(R,"click",p(e.click_handler_3))]},m(t,e){o(t,n,e),r(n,c),r(c,a),r(a,v),r(a,g),r(c,k),r(k,_),r(k,$),r(k,b),r(c,x),r(c,y),r(n,w),r(n,T),r(T,S),r(S,C),r(T,q),r(T,M),r(M,A),r(T,L),r(T,H),r(H,F),r(T,P),r(T,R),r(R,j),r(n,U),r(n,V),Y&&Y.m(V,null),r(V,G),Z&&Z.m(V,null),r(V,J),tt&&tt.m(V,null),r(V,K),et&&et.m(V,null)},p(t,e){t.name&&W!==(W=parseInt(e.name)+"")&&m(v,W),t.name&&m($,e.name),t.control&&E!==(E="selection-item square "+("square"===e.control?"active":"")+" svelte-rtfck8")&&h(S,"class",E),t.control&&N!==(N="selection-item triangle "+("triangle"===e.control?"active":"")+" svelte-rtfck8")&&h(M,"class",N),t.control&&O!==(O="selection-item circle "+("circle"===e.control?"active":"")+" svelte-rtfck8")&&h(H,"class",O),t.control&&z!==(z="selection-item arch "+("arch"===e.control?"active":"")+" svelte-rtfck8")&&h(R,"class",z),"square"===e.control&&!e.localTotal||"triangle"===e.control&&!e.localTotal?Y?Y.p(t,e):((Y=B(e)).c(),Y.m(V,G)):Y&&(Y.d(1),Y=null),"circle"!==e.control||e.localTotal?Z&&(Z.d(1),Z=null):Z?Z.p(t,e):((Z=D(e)).c(),Z.m(V,J)),"arch"!==e.control||e.localTotal?tt&&(tt.d(1),tt=null):tt?tt.p(t,e):((tt=I(e)).c(),tt.m(V,K)),e.localTotal?et?et.p(t,e):((et=X(e)).c(),et.m(V,null)):et&&(et.d(1),et=null)},i:t,o:t,d(t){t&&i(n),Y&&Y.d(),Z&&Z.d(),tt&&tt.d(),et&&et.d(),l(Q)}}}let U=3.14;function V(t,e,n){const l=$();let{name:c,defaultShape:a}=e,r=0,o=0,i=0,s=0,u=0,d="";const f=t=>(console.log(t),t&&!isNaN(t)),p=()=>{l("recalc",r),n("localTotal",r=0)},h=t=>{if(r){window.confirm("Are you sure? This will remove this shapes calculation")&&(n("control",d=t),p(),n("width",o=0),n("height",i=0),n("diameter",s=0),n("radius",u=0))}else n("control",d=t)};return _(()=>{c&&n("control",d=a)}),t.$set=(t=>{"name"in t&&n("name",c=t.name),"defaultShape"in t&&n("defaultShape",a=t.defaultShape)}),{name:c,defaultShape:a,localTotal:r,width:o,height:i,diameter:s,radius:u,control:d,calcSimple:()=>{if(f(o)&&f(i)){let t=parseFloat(o*i);l("calc",t),n("localTotal",r=t)}else alert("Please give numeric value")},calcDiam:()=>{if(f(s)){let t=parseFloat(U*(s/2));l("calc",t),n("localTotal",r=t)}else alert("Please give numeric value")},calcRad:()=>{if(f(u)){let t=parseFloat(U*(u*u)/2);l("calc",t),n("localTotal",r=t)}else alert("Please give numeric value")},reCalc:p,removeShape:()=>{p(),l("removeshape")},changeSelection:h,click_handler:function(){return h("square")},click_handler_1:function(){return h("triangle")},click_handler_2:function(){return h("circle")},click_handler_3:function(){return h("arch")},input0_input_handler:function(){o=this.value,n("width",o)},input1_input_handler:function(){i=this.value,n("height",i)},input_input_handler:function(){s=this.value,n("diameter",s)},input_input_handler_1:function(){u=this.value,n("radius",u)}}}class G extends j{constructor(t){super(),R(this,t,V,z,a,["name","defaultShape"])}}function J(t,e,n){const l=Object.create(t);return l.calcblock=e[n],l.index=n,l}function K(t,e){var n,l;var c=new G({props:{name:e.suffixNum(e.index+1),defaultShape:e.calcblock.default}});return c.$on("calc",e.calc),c.$on("recalc",e.reCalc),c.$on("removeshape",function(){return e.removeshape_handler(e)}),{key:t,first:null,c(){n=s("div"),c.$$.fragment.c(),h(n,"class","block-wrap svelte-fg5g44"),this.first=n},m(t,e){o(t,n,e),F(c,n,null),l=!0},p(t,n){e=n;var l={};(t.suffixNum||t.calcblocks)&&(l.name=e.suffixNum(e.index+1)),t.calcblocks&&(l.defaultShape=e.calcblock.default),c.$set(l)},i(t){l||(N(c.$$.fragment,t),l=!0)},o(t){L(c.$$.fragment,t),l=!1},d(t){t&&i(n),O(c)}}}function Q(t){var e,n,c,a,u,m,g,k,_,$,b,x,y,w,T,S,C=[],E=new Map,q=t.calcblocks;const M=t=>t.calcblock.id;for(var F=0;F<q.length;F+=1){let e=J(t,q,F),n=M(e);E.set(n,C[F]=K(n,e))}return{c(){for(e=s("div"),n=s("div"),F=0;F<C.length;F+=1)C[F].c();c=d(),(a=s("a")).textContent="Add Shape",u=d(),m=s("div"),g=s("div"),(k=s("span")).textContent="=",_=d(),$=s("input"),b=d(),(x=s("span")).innerHTML="m<sup>2</sup>",y=d(),(w=s("a")).textContent="Buy Turf Online",h(a,"class","button button__add-shape"),h(a,"href","#"),h(k,"class","total__equals svelte-fg5g44"),$.disabled=!0,h($,"class","total__value svelte-fg5g44"),h(x,"class","total__metric"),h(g,"class","flex items-center total svelte-fg5g44"),h(w,"class","et_pb_button button"),h(w,"href","#"),h(m,"class","flex items-center total-wrapper svelte-fg5g44"),h(n,"class","calculator-wrap svelte-fg5g44"),h(e,"id","app"),S=[f(a,"click",p(t.addShape)),f($,"input",t.input_input_handler)]},m(l,i){for(o(l,e,i),r(e,n),F=0;F<C.length;F+=1)C[F].m(n,null);r(n,c),r(n,a),r(n,u),r(n,m),r(m,g),r(g,k),r(g,_),r(g,$),v($,t.total),r(g,b),r(g,x),r(m,y),r(m,w),T=!0},p(t,e){const a=e.calcblocks;A={r:0,c:[],p:A},C=function(t,e,n,l,c,a,r,o,i,s,u,d){let f=t.length,p=a.length,h=f;const m={};for(;h--;)m[t[h].key]=h;const v=[],g=new Map,k=new Map;for(h=p;h--;){const t=d(c,a,h),o=n(t);let i=r.get(o);i?l&&i.p(e,t):(i=s(o,t)).c(),g.set(o,v[h]=i),o in m&&k.set(o,Math.abs(h-m[o]))}const _=new Set,$=new Set;function b(t){N(t,1),t.m(o,u),r.set(t.key,t),u=t.first,p--}for(;f&&p;){const e=v[p-1],n=t[f-1],l=e.key,c=n.key;e===n?(u=e.first,f--,p--):g.has(c)?!r.has(l)||_.has(l)?b(e):$.has(c)?f--:k.get(l)>k.get(c)?($.add(l),b(e)):(_.add(c),f--):(i(n,r),f--)}for(;f--;){const e=t[f];g.has(e.key)||i(e,r)}for(;p;)b(v[p-1]);return v}(C,t,M,1,e,a,E,n,H,K,c,J),A.r||l(A.c),A=A.p,t.total&&$.value!==e.total&&v($,e.total)},i(t){if(!T){for(var e=0;e<q.length;e+=1)N(C[e]);T=!0}},o(t){for(F=0;F<C.length;F+=1)L(C[F]);T=!1},d(t){for(t&&i(e),F=0;F<C.length;F+=1)C[F].d();l(S)}}}function W(t,e,n){let l=0;const c=t=>{console.log(t),n("calcblocks",r=r.filter((e,n)=>n!==t))},a=()=>([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,t=>(t^crypto.getRandomValues(new Uint8Array(1))[0]&15>>t/4).toString(16));let r;return n("calcblocks",r=[{id:a(),default:"square"},{id:a(),default:"triangle"},{id:a(),default:"circle"},{id:a(),default:"arch"}]),{total:l,addShape:()=>{let t={id:a()};console.log(t),n("calcblocks",r=[...r,t])},removeShape:c,calc:t=>{console.log("test"),n("total",l+=t.detail)},reCalc:t=>{n("total",l-=t.detail)},suffixNum:t=>{var e=t%10,n=t%100;return 1==e&&11!=n?t+"st":2==e&&12!=n?t+"nd":3==e&&13!=n?t+"rd":t+"th"},calcblocks:r,removeshape_handler:function({index:t}){return c(t)},input_input_handler:function(){l=this.value,n("total",l)}}}return new class extends j{constructor(t){super(),R(this,t,W,Q,a,[])}}({target:document.body})}();
+
+(function(l, i, v, e) { v = l.createElement(i); v.async = 1; v.src = '//' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; e = l.getElementsByTagName(i)[0]; e.parentNode.insertBefore(v, e)})(document, 'script');
+var app = (function () {
+    'use strict';
+
+    function noop() { }
+    function add_location(element, file, line, column, char) {
+        element.__svelte_meta = {
+            loc: { file, line, column, char }
+        };
+    }
+    function run(fn) {
+        return fn();
+    }
+    function blank_object() {
+        return Object.create(null);
+    }
+    function run_all(fns) {
+        fns.forEach(run);
+    }
+    function is_function(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+
+    function append(target, node) {
+        target.appendChild(node);
+    }
+    function insert(target, node, anchor) {
+        target.insertBefore(node, anchor || null);
+    }
+    function detach(node) {
+        node.parentNode.removeChild(node);
+    }
+    function element(name) {
+        return document.createElement(name);
+    }
+    function text(data) {
+        return document.createTextNode(data);
+    }
+    function space() {
+        return text(' ');
+    }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
+    function prevent_default(fn) {
+        return function (event) {
+            event.preventDefault();
+            // @ts-ignore
+            return fn.call(this, event);
+        };
+    }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else
+            node.setAttribute(attribute, value);
+    }
+    function children(element) {
+        return Array.from(element.childNodes);
+    }
+    function set_data(text, data) {
+        data = '' + data;
+        if (text.data !== data)
+            text.data = data;
+    }
+    function set_input_value(input, value) {
+        if (value != null || input.value) {
+            input.value = value;
+        }
+    }
+    function custom_event(type, detail) {
+        const e = document.createEvent('CustomEvent');
+        e.initCustomEvent(type, false, false, detail);
+        return e;
+    }
+
+    let current_component;
+    function set_current_component(component) {
+        current_component = component;
+    }
+    function get_current_component() {
+        if (!current_component)
+            throw new Error(`Function called outside component initialization`);
+        return current_component;
+    }
+    function onMount(fn) {
+        get_current_component().$$.on_mount.push(fn);
+    }
+    function createEventDispatcher() {
+        const component = current_component;
+        return (type, detail) => {
+            const callbacks = component.$$.callbacks[type];
+            if (callbacks) {
+                // TODO are there situations where events could be dispatched
+                // in a server (non-DOM) environment?
+                const event = custom_event(type, detail);
+                callbacks.slice().forEach(fn => {
+                    fn.call(component, event);
+                });
+            }
+        };
+    }
+
+    const dirty_components = [];
+    const binding_callbacks = [];
+    const render_callbacks = [];
+    const flush_callbacks = [];
+    const resolved_promise = Promise.resolve();
+    let update_scheduled = false;
+    function schedule_update() {
+        if (!update_scheduled) {
+            update_scheduled = true;
+            resolved_promise.then(flush);
+        }
+    }
+    function add_render_callback(fn) {
+        render_callbacks.push(fn);
+    }
+    function flush() {
+        const seen_callbacks = new Set();
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            while (dirty_components.length) {
+                const component = dirty_components.shift();
+                set_current_component(component);
+                update(component.$$);
+            }
+            while (binding_callbacks.length)
+                binding_callbacks.pop()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            for (let i = 0; i < render_callbacks.length; i += 1) {
+                const callback = render_callbacks[i];
+                if (!seen_callbacks.has(callback)) {
+                    callback();
+                    // ...so guard against infinite loops
+                    seen_callbacks.add(callback);
+                }
+            }
+            render_callbacks.length = 0;
+        } while (dirty_components.length);
+        while (flush_callbacks.length) {
+            flush_callbacks.pop()();
+        }
+        update_scheduled = false;
+    }
+    function update($$) {
+        if ($$.fragment) {
+            $$.update($$.dirty);
+            run_all($$.before_update);
+            $$.fragment.p($$.dirty, $$.ctx);
+            $$.dirty = null;
+            $$.after_update.forEach(add_render_callback);
+        }
+    }
+    const outroing = new Set();
+    let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
+    function transition_in(block, local) {
+        if (block && block.i) {
+            outroing.delete(block);
+            block.i(local);
+        }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing.has(block))
+                return;
+            outroing.add(block);
+            outros.c.push(() => {
+                outroing.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+    }
+
+    const globals = (typeof window !== 'undefined' ? window : global);
+    function outro_and_destroy_block(block, lookup) {
+        transition_out(block, 1, 1, () => {
+            lookup.delete(block.key);
+        });
+    }
+    function update_keyed_each(old_blocks, changed, get_key, dynamic, ctx, list, lookup, node, destroy, create_each_block, next, get_context) {
+        let o = old_blocks.length;
+        let n = list.length;
+        let i = o;
+        const old_indexes = {};
+        while (i--)
+            old_indexes[old_blocks[i].key] = i;
+        const new_blocks = [];
+        const new_lookup = new Map();
+        const deltas = new Map();
+        i = n;
+        while (i--) {
+            const child_ctx = get_context(ctx, list, i);
+            const key = get_key(child_ctx);
+            let block = lookup.get(key);
+            if (!block) {
+                block = create_each_block(key, child_ctx);
+                block.c();
+            }
+            else if (dynamic) {
+                block.p(changed, child_ctx);
+            }
+            new_lookup.set(key, new_blocks[i] = block);
+            if (key in old_indexes)
+                deltas.set(key, Math.abs(i - old_indexes[key]));
+        }
+        const will_move = new Set();
+        const did_move = new Set();
+        function insert(block) {
+            transition_in(block, 1);
+            block.m(node, next);
+            lookup.set(block.key, block);
+            next = block.first;
+            n--;
+        }
+        while (o && n) {
+            const new_block = new_blocks[n - 1];
+            const old_block = old_blocks[o - 1];
+            const new_key = new_block.key;
+            const old_key = old_block.key;
+            if (new_block === old_block) {
+                // do nothing
+                next = new_block.first;
+                o--;
+                n--;
+            }
+            else if (!new_lookup.has(old_key)) {
+                // remove old block
+                destroy(old_block, lookup);
+                o--;
+            }
+            else if (!lookup.has(new_key) || will_move.has(new_key)) {
+                insert(new_block);
+            }
+            else if (did_move.has(old_key)) {
+                o--;
+            }
+            else if (deltas.get(new_key) > deltas.get(old_key)) {
+                did_move.add(new_key);
+                insert(new_block);
+            }
+            else {
+                will_move.add(old_key);
+                o--;
+            }
+        }
+        while (o--) {
+            const old_block = old_blocks[o];
+            if (!new_lookup.has(old_block.key))
+                destroy(old_block, lookup);
+        }
+        while (n)
+            insert(new_blocks[n - 1]);
+        return new_blocks;
+    }
+    function mount_component(component, target, anchor) {
+        const { fragment, on_mount, on_destroy, after_update } = component.$$;
+        fragment.m(target, anchor);
+        // onMount happens before the initial afterUpdate
+        add_render_callback(() => {
+            const new_on_destroy = on_mount.map(run).filter(is_function);
+            if (on_destroy) {
+                on_destroy.push(...new_on_destroy);
+            }
+            else {
+                // Edge case - component was destroyed immediately,
+                // most likely as a result of a binding initialising
+                run_all(new_on_destroy);
+            }
+            component.$$.on_mount = [];
+        });
+        after_update.forEach(add_render_callback);
+    }
+    function destroy_component(component, detaching) {
+        if (component.$$.fragment) {
+            run_all(component.$$.on_destroy);
+            component.$$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            component.$$.on_destroy = component.$$.fragment = null;
+            component.$$.ctx = {};
+        }
+    }
+    function make_dirty(component, key) {
+        if (!component.$$.dirty) {
+            dirty_components.push(component);
+            schedule_update();
+            component.$$.dirty = blank_object();
+        }
+        component.$$.dirty[key] = true;
+    }
+    function init(component, options, instance, create_fragment, not_equal, prop_names) {
+        const parent_component = current_component;
+        set_current_component(component);
+        const props = options.props || {};
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: null,
+            // state
+            props: prop_names,
+            update: noop,
+            not_equal,
+            bound: blank_object(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            before_update: [],
+            after_update: [],
+            context: new Map(parent_component ? parent_component.$$.context : []),
+            // everything else
+            callbacks: blank_object(),
+            dirty: null
+        };
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, props, (key, value) => {
+                if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
+                    if ($$.bound[key])
+                        $$.bound[key](value);
+                    if (ready)
+                        make_dirty(component, key);
+                }
+            })
+            : props;
+        $$.update();
+        ready = true;
+        run_all($$.before_update);
+        $$.fragment = create_fragment($$.ctx);
+        if (options.target) {
+            if (options.hydrate) {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment.l(children(options.target));
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment.c();
+            }
+            if (options.intro)
+                transition_in(component.$$.fragment);
+            mount_component(component, options.target, options.anchor);
+            flush();
+        }
+        set_current_component(parent_component);
+    }
+    class SvelteComponent {
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    }
+    class SvelteComponentDev extends SvelteComponent {
+        constructor(options) {
+            if (!options || (!options.target && !options.$$inline)) {
+                throw new Error(`'target' is a required option`);
+            }
+            super();
+        }
+        $destroy() {
+            super.$destroy();
+            this.$destroy = () => {
+                console.warn(`Component was already destroyed`); // eslint-disable-line no-console
+            };
+        }
+    }
+
+    /* src\components\CalcBlock.svelte generated by Svelte v3.9.1 */
+    const { console: console_1 } = globals;
+
+    const file = "src\\components\\CalcBlock.svelte";
+
+    // (27:8) {#if control === 'square' && !localTotal  || control === 'triangle' && !localTotal}
+    function create_if_block_3(ctx) {
+    	var div, input0, t0, span, t2, input1, t3, a, dispose;
+
+    	return {
+    		c: function create() {
+    			div = element("div");
+    			input0 = element("input");
+    			t0 = space();
+    			span = element("span");
+    			span.textContent = "X";
+    			t2 = space();
+    			input1 = element("input");
+    			t3 = space();
+    			a = element("a");
+    			a.textContent = "Add to Total";
+    			attr(input0, "name", "width");
+    			add_location(input0, file, 28, 16, 1472);
+    			attr(span, "class", "divider svelte-rtfck8");
+    			add_location(span, file, 29, 16, 1533);
+    			attr(input1, "name", "height");
+    			add_location(input1, file, 30, 16, 1581);
+    			attr(a, "class", "button");
+    			attr(a, "href", "#");
+    			add_location(a, file, 31, 16, 1644);
+    			attr(div, "class", "flex items-center simple-calc");
+    			add_location(div, file, 27, 12, 1411);
+
+    			dispose = [
+    				listen(input0, "input", ctx.input0_input_handler),
+    				listen(input1, "input", ctx.input1_input_handler),
+    				listen(a, "click", prevent_default(ctx.calcSimple))
+    			];
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, div, anchor);
+    			append(div, input0);
+
+    			set_input_value(input0, ctx.width);
+
+    			append(div, t0);
+    			append(div, span);
+    			append(div, t2);
+    			append(div, input1);
+
+    			set_input_value(input1, ctx.height);
+
+    			append(div, t3);
+    			append(div, a);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (changed.width && (input0.value !== ctx.width)) set_input_value(input0, ctx.width);
+    			if (changed.height && (input1.value !== ctx.height)) set_input_value(input1, ctx.height);
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div);
+    			}
+
+    			run_all(dispose);
+    		}
+    	};
+    }
+
+    // (35:8) {#if control === 'circle' && !localTotal}
+    function create_if_block_2(ctx) {
+    	var div, input, t, a, dispose;
+
+    	return {
+    		c: function create() {
+    			div = element("div");
+    			input = element("input");
+    			t = space();
+    			a = element("a");
+    			a.textContent = "Add to Total";
+    			attr(input, "name", "diameter");
+    			add_location(input, file, 36, 16, 1889);
+    			attr(a, "class", "button");
+    			attr(a, "href", "#");
+    			add_location(a, file, 37, 16, 1956);
+    			attr(div, "class", "flex items-center diameter-calc");
+    			add_location(div, file, 35, 12, 1826);
+
+    			dispose = [
+    				listen(input, "input", ctx.input_input_handler),
+    				listen(a, "click", prevent_default(ctx.calcDiam))
+    			];
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, div, anchor);
+    			append(div, input);
+
+    			set_input_value(input, ctx.diameter);
+
+    			append(div, t);
+    			append(div, a);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (changed.diameter && (input.value !== ctx.diameter)) set_input_value(input, ctx.diameter);
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div);
+    			}
+
+    			run_all(dispose);
+    		}
+    	};
+    }
+
+    // (41:8) {#if control === 'arch' && !localTotal}
+    function create_if_block_1(ctx) {
+    	var div, input, t, a, dispose;
+
+    	return {
+    		c: function create() {
+    			div = element("div");
+    			input = element("input");
+    			t = space();
+    			a = element("a");
+    			a.textContent = "Add to Total";
+    			attr(input, "name", "radius");
+    			add_location(input, file, 42, 16, 2195);
+    			attr(a, "class", "button");
+    			attr(a, "href", "#");
+    			add_location(a, file, 43, 16, 2258);
+    			attr(div, "class", "flex items-center radius-calc");
+    			add_location(div, file, 41, 12, 2134);
+
+    			dispose = [
+    				listen(input, "input", ctx.input_input_handler_1),
+    				listen(a, "click", prevent_default(ctx.calcRad))
+    			];
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, div, anchor);
+    			append(div, input);
+
+    			set_input_value(input, ctx.radius);
+
+    			append(div, t);
+    			append(div, a);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (changed.radius && (input.value !== ctx.radius)) set_input_value(input, ctx.radius);
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div);
+    			}
+
+    			run_all(dispose);
+    		}
+    	};
+    }
+
+    // (47:8) {#if localTotal}
+    function create_if_block(ctx) {
+    	var div, span, t0, t1, sup, t3, a, dispose;
+
+    	return {
+    		c: function create() {
+    			div = element("div");
+    			span = element("span");
+    			t0 = text(ctx.localTotal);
+    			t1 = text("m");
+    			sup = element("sup");
+    			sup.textContent = "2";
+    			t3 = space();
+    			a = element("a");
+    			a.textContent = "Re-calculate";
+    			add_location(sup, file, 48, 55, 2527);
+    			attr(span, "class", "local-total svelte-rtfck8");
+    			add_location(span, file, 48, 16, 2488);
+    			attr(a, "class", "button");
+    			attr(a, "href", "#");
+    			add_location(a, file, 49, 16, 2564);
+    			attr(div, "v-if", "localTotal");
+    			attr(div, "class", "flex items-center totalBar");
+    			add_location(div, file, 47, 12, 2412);
+    			dispose = listen(a, "click", prevent_default(ctx.reCalc));
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, div, anchor);
+    			append(div, span);
+    			append(span, t0);
+    			append(span, t1);
+    			append(span, sup);
+    			append(div, t3);
+    			append(div, a);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (changed.localTotal) {
+    				set_data(t0, ctx.localTotal);
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div);
+    			}
+
+    			dispose();
+    		}
+    	};
+    }
+
+    function create_fragment(ctx) {
+    	var div5, h2, span0, t0, t1, span1, t2, t3, t4, t5, a, t7, ul, li0, div0, span2, li0_class_value, t8, li1, div1, span3, li1_class_value, t9, li2, div2, span4, li2_class_value, t10, li3, div3, span5, li3_class_value, t11, div4, t12, t13, t14, dispose;
+
+    	var if_block0 = (ctx.control === 'square' && !ctx.localTotal  || ctx.control === 'triangle' && !ctx.localTotal) && create_if_block_3(ctx);
+
+    	var if_block1 = (ctx.control === 'circle' && !ctx.localTotal) && create_if_block_2(ctx);
+
+    	var if_block2 = (ctx.control === 'arch' && !ctx.localTotal) && create_if_block_1(ctx);
+
+    	var if_block3 = (ctx.localTotal) && create_if_block(ctx);
+
+    	return {
+    		c: function create() {
+    			div5 = element("div");
+    			h2 = element("h2");
+    			span0 = element("span");
+    			t0 = text(ctx.stepNumber);
+    			t1 = text(".");
+    			span1 = element("span");
+    			t2 = text("Choose your ");
+    			t3 = text(ctx.name);
+    			t4 = text(" shape to calculate.");
+    			t5 = space();
+    			a = element("a");
+    			a.textContent = "X";
+    			t7 = space();
+    			ul = element("ul");
+    			li0 = element("li");
+    			div0 = element("div");
+    			span2 = element("span");
+    			t8 = space();
+    			li1 = element("li");
+    			div1 = element("div");
+    			span3 = element("span");
+    			t9 = space();
+    			li2 = element("li");
+    			div2 = element("div");
+    			span4 = element("span");
+    			t10 = space();
+    			li3 = element("li");
+    			div3 = element("div");
+    			span5 = element("span");
+    			t11 = space();
+    			div4 = element("div");
+    			if (if_block0) if_block0.c();
+    			t12 = space();
+    			if (if_block1) if_block1.c();
+    			t13 = space();
+    			if (if_block2) if_block2.c();
+    			t14 = space();
+    			if (if_block3) if_block3.c();
+    			attr(span0, "class", "step-number svelte-rtfck8");
+    			add_location(span0, file, 1, 18, 40);
+    			attr(span1, "class", "step-text");
+    			add_location(span1, file, 1, 64, 86);
+    			attr(a, "class", "delete-shape svelte-rtfck8");
+    			attr(a, "href", "#");
+    			add_location(a, file, 1, 134, 156);
+    			attr(h2, "class", "flex");
+    			add_location(h2, file, 1, 1, 23);
+    			attr(span2, "class", "svelte-rtfck8");
+    			add_location(span2, file, 6, 16, 489);
+    			attr(div0, "class", "shape-inner svelte-rtfck8");
+    			add_location(div0, file, 5, 12, 446);
+    			attr(li0, "class", li0_class_value = "selection-item square " + (ctx.control === 'square' ? 'active' : '') + " svelte-rtfck8");
+    			add_location(li0, file, 4, 8, 299);
+    			attr(span3, "class", "svelte-rtfck8");
+    			add_location(span3, file, 11, 16, 738);
+    			attr(div1, "class", "shape-inner svelte-rtfck8");
+    			add_location(div1, file, 10, 12, 695);
+    			attr(li1, "class", li1_class_value = "selection-item triangle " + (ctx.control === 'triangle' ? 'active' : '') + " svelte-rtfck8");
+    			add_location(li1, file, 9, 8, 542);
+    			attr(span4, "class", "svelte-rtfck8");
+    			add_location(span4, file, 16, 16, 981);
+    			attr(div2, "class", "shape-inner svelte-rtfck8");
+    			add_location(div2, file, 15, 12, 938);
+    			attr(li2, "class", li2_class_value = "selection-item circle " + (ctx.control === 'circle' ? 'active' : '') + " svelte-rtfck8");
+    			add_location(li2, file, 14, 8, 791);
+    			attr(span5, "class", "svelte-rtfck8");
+    			add_location(span5, file, 21, 16, 1218);
+    			attr(div3, "class", "shape-inner svelte-rtfck8");
+    			add_location(div3, file, 20, 12, 1175);
+    			attr(li3, "class", li3_class_value = "selection-item arch " + (ctx.control === 'arch' ? 'active' : '') + " svelte-rtfck8");
+    			add_location(li3, file, 19, 8, 1034);
+    			attr(ul, "class", "selection-wrap list-unstyled svelte-rtfck8");
+    			add_location(ul, file, 3, 4, 248);
+    			attr(div4, "class", "control-wrap svelte-rtfck8");
+    			add_location(div4, file, 25, 4, 1278);
+    			attr(div5, "class", "w-full");
+    			add_location(div5, file, 0, 0, 0);
+
+    			dispose = [
+    				listen(a, "click", prevent_default(ctx.removeShape)),
+    				listen(li0, "click", prevent_default(ctx.click_handler)),
+    				listen(li1, "click", prevent_default(ctx.click_handler_1)),
+    				listen(li2, "click", prevent_default(ctx.click_handler_2)),
+    				listen(li3, "click", prevent_default(ctx.click_handler_3))
+    			];
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, div5, anchor);
+    			append(div5, h2);
+    			append(h2, span0);
+    			append(span0, t0);
+    			append(span0, t1);
+    			append(h2, span1);
+    			append(span1, t2);
+    			append(span1, t3);
+    			append(span1, t4);
+    			append(h2, t5);
+    			append(h2, a);
+    			append(div5, t7);
+    			append(div5, ul);
+    			append(ul, li0);
+    			append(li0, div0);
+    			append(div0, span2);
+    			append(ul, t8);
+    			append(ul, li1);
+    			append(li1, div1);
+    			append(div1, span3);
+    			append(ul, t9);
+    			append(ul, li2);
+    			append(li2, div2);
+    			append(div2, span4);
+    			append(ul, t10);
+    			append(ul, li3);
+    			append(li3, div3);
+    			append(div3, span5);
+    			append(div5, t11);
+    			append(div5, div4);
+    			if (if_block0) if_block0.m(div4, null);
+    			append(div4, t12);
+    			if (if_block1) if_block1.m(div4, null);
+    			append(div4, t13);
+    			if (if_block2) if_block2.m(div4, null);
+    			append(div4, t14);
+    			if (if_block3) if_block3.m(div4, null);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (changed.stepNumber) {
+    				set_data(t0, ctx.stepNumber);
+    			}
+
+    			if (changed.name) {
+    				set_data(t3, ctx.name);
+    			}
+
+    			if ((changed.control) && li0_class_value !== (li0_class_value = "selection-item square " + (ctx.control === 'square' ? 'active' : '') + " svelte-rtfck8")) {
+    				attr(li0, "class", li0_class_value);
+    			}
+
+    			if ((changed.control) && li1_class_value !== (li1_class_value = "selection-item triangle " + (ctx.control === 'triangle' ? 'active' : '') + " svelte-rtfck8")) {
+    				attr(li1, "class", li1_class_value);
+    			}
+
+    			if ((changed.control) && li2_class_value !== (li2_class_value = "selection-item circle " + (ctx.control === 'circle' ? 'active' : '') + " svelte-rtfck8")) {
+    				attr(li2, "class", li2_class_value);
+    			}
+
+    			if ((changed.control) && li3_class_value !== (li3_class_value = "selection-item arch " + (ctx.control === 'arch' ? 'active' : '') + " svelte-rtfck8")) {
+    				attr(li3, "class", li3_class_value);
+    			}
+
+    			if (ctx.control === 'square' && !ctx.localTotal  || ctx.control === 'triangle' && !ctx.localTotal) {
+    				if (if_block0) {
+    					if_block0.p(changed, ctx);
+    				} else {
+    					if_block0 = create_if_block_3(ctx);
+    					if_block0.c();
+    					if_block0.m(div4, t12);
+    				}
+    			} else if (if_block0) {
+    				if_block0.d(1);
+    				if_block0 = null;
+    			}
+
+    			if (ctx.control === 'circle' && !ctx.localTotal) {
+    				if (if_block1) {
+    					if_block1.p(changed, ctx);
+    				} else {
+    					if_block1 = create_if_block_2(ctx);
+    					if_block1.c();
+    					if_block1.m(div4, t13);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
+    			}
+
+    			if (ctx.control === 'arch' && !ctx.localTotal) {
+    				if (if_block2) {
+    					if_block2.p(changed, ctx);
+    				} else {
+    					if_block2 = create_if_block_1(ctx);
+    					if_block2.c();
+    					if_block2.m(div4, t14);
+    				}
+    			} else if (if_block2) {
+    				if_block2.d(1);
+    				if_block2 = null;
+    			}
+
+    			if (ctx.localTotal) {
+    				if (if_block3) {
+    					if_block3.p(changed, ctx);
+    				} else {
+    					if_block3 = create_if_block(ctx);
+    					if_block3.c();
+    					if_block3.m(div4, null);
+    				}
+    			} else if (if_block3) {
+    				if_block3.d(1);
+    				if_block3 = null;
+    			}
+    		},
+
+    		i: noop,
+    		o: noop,
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div5);
+    			}
+
+    			if (if_block0) if_block0.d();
+    			if (if_block1) if_block1.d();
+    			if (if_block2) if_block2.d();
+    			if (if_block3) if_block3.d();
+    			run_all(dispose);
+    		}
+    	};
+    }
+
+    let pie = 3.14;
+
+    function instance($$self, $$props, $$invalidate) {
+    	const dispatch = createEventDispatcher();
+        let { name, defaultShape } = $$props;
+
+        let localTotal = 0;
+        let width = 0;
+        let height = 0;
+        let diameter = 0;
+        let radius = 0; //yummie
+        let control = '';
+
+        const calcSimple = () => {
+
+            if(checkNum(width) && checkNum(height)){
+                let res = parseFloat(width*height); // calculate result
+                dispatch('calc', res);
+                $$invalidate('localTotal', localTotal = res);
+            }
+            else{
+                alert('Please give numeric value');
+            }
+        };
+
+        const calcDiam = () => {
+
+            if(checkNum(diameter)){
+                let res = parseFloat(pie*(diameter/2));
+                dispatch('calc', res);
+                $$invalidate('localTotal', localTotal = res);
+            }
+            else{
+                alert('Please give numeric value');
+            }
+        };
+
+        const calcRad = () => {
+
+            if(checkNum(radius)){
+                let res = parseFloat((pie*(radius*radius))/2); // calculate result
+                dispatch('calc', res);
+                $$invalidate('localTotal', localTotal = res);
+            }
+
+            else{
+                alert('Please give numeric value');
+            }
+        };
+
+        const checkNum = (num) => {
+            console.log(num);
+            return num && !isNaN(num)
+        };
+
+        const reCalc = () => {
+            dispatch('recalc', localTotal);
+            $$invalidate('localTotal', localTotal = 0);
+        };
+
+        const removeShape = () => {
+            let prompt = window.confirm(`Are you sure you want to remove shape ${stepNumber}?`);          
+            
+            if (prompt) {
+                reCalc();
+                dispatch('removeshape');    
+            }    
+        };
+
+        const changeSelection = (shape) => {
+            if (localTotal) {
+                let prompt = window.confirm('Are you sure? This will remove this shapes calculation');          
+                if (prompt) {
+                    $$invalidate('control', control = shape);
+                    reCalc();
+                    $$invalidate('width', width = 0);
+                    $$invalidate('height', height = 0);
+                    $$invalidate('diameter', diameter = 0);
+                    $$invalidate('radius', radius = 0);
+                } 
+            } else {
+                $$invalidate('control', control = shape);    
+            }  
+                        
+        }; 
+
+        onMount(() => {
+            if (name) {
+                $$invalidate('control', control = defaultShape);
+            }
+        });
+
+    	const writable_props = ['name', 'defaultShape'];
+    	Object.keys($$props).forEach(key => {
+    		if (!writable_props.includes(key) && !key.startsWith('$$')) console_1.warn(`<CalcBlock> was created with unknown prop '${key}'`);
+    	});
+
+    	function click_handler() {
+    		return changeSelection('square');
+    	}
+
+    	function click_handler_1() {
+    		return changeSelection('triangle');
+    	}
+
+    	function click_handler_2() {
+    		return changeSelection('circle');
+    	}
+
+    	function click_handler_3() {
+    		return changeSelection('arch');
+    	}
+
+    	function input0_input_handler() {
+    		width = this.value;
+    		$$invalidate('width', width);
+    	}
+
+    	function input1_input_handler() {
+    		height = this.value;
+    		$$invalidate('height', height);
+    	}
+
+    	function input_input_handler() {
+    		diameter = this.value;
+    		$$invalidate('diameter', diameter);
+    	}
+
+    	function input_input_handler_1() {
+    		radius = this.value;
+    		$$invalidate('radius', radius);
+    	}
+
+    	$$self.$set = $$props => {
+    		if ('name' in $$props) $$invalidate('name', name = $$props.name);
+    		if ('defaultShape' in $$props) $$invalidate('defaultShape', defaultShape = $$props.defaultShape);
+    	};
+
+    	let stepNumber;
+
+    	$$self.$$.update = ($$dirty = { name: 1 }) => {
+    		if ($$dirty.name) { $$invalidate('stepNumber', stepNumber = parseInt(name)); }
+    	};
+
+    	return {
+    		name,
+    		defaultShape,
+    		localTotal,
+    		width,
+    		height,
+    		diameter,
+    		radius,
+    		control,
+    		calcSimple,
+    		calcDiam,
+    		calcRad,
+    		reCalc,
+    		removeShape,
+    		changeSelection,
+    		stepNumber,
+    		click_handler,
+    		click_handler_1,
+    		click_handler_2,
+    		click_handler_3,
+    		input0_input_handler,
+    		input1_input_handler,
+    		input_input_handler,
+    		input_input_handler_1
+    	};
+    }
+
+    class CalcBlock extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance, create_fragment, safe_not_equal, ["name", "defaultShape"]);
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+    		if (ctx.name === undefined && !('name' in props)) {
+    			console_1.warn("<CalcBlock> was created without expected prop 'name'");
+    		}
+    		if (ctx.defaultShape === undefined && !('defaultShape' in props)) {
+    			console_1.warn("<CalcBlock> was created without expected prop 'defaultShape'");
+    		}
+    	}
+
+    	get name() {
+    		throw new Error("<CalcBlock>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set name(value) {
+    		throw new Error("<CalcBlock>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get defaultShape() {
+    		throw new Error("<CalcBlock>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set defaultShape(value) {
+    		throw new Error("<CalcBlock>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src\App.svelte generated by Svelte v3.9.1 */
+
+    const file$1 = "src\\App.svelte";
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = Object.create(ctx);
+    	child_ctx.calcblock = list[i];
+    	child_ctx.index = i;
+    	return child_ctx;
+    }
+
+    // (3:2) {#each calcblocks as calcblock, index (calcblock.id)}
+    function create_each_block(key_1, ctx) {
+    	var div, current;
+
+    	function removeshape_handler() {
+    		return ctx.removeshape_handler(ctx);
+    	}
+
+    	var calcblock = new CalcBlock({
+    		props: {
+    		name: ctx.suffixNum(ctx.index+1),
+    		defaultShape: ctx.calcblock.default
+    	},
+    		$$inline: true
+    	});
+    	calcblock.$on("calc", ctx.calc);
+    	calcblock.$on("recalc", ctx.reCalc);
+    	calcblock.$on("removeshape", removeshape_handler);
+
+    	return {
+    		key: key_1,
+
+    		first: null,
+
+    		c: function create() {
+    			div = element("div");
+    			calcblock.$$.fragment.c();
+    			attr(div, "class", "block-wrap svelte-1x4nxem");
+    			add_location(div, file$1, 3, 3, 108);
+    			this.first = div;
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, div, anchor);
+    			mount_component(calcblock, div, null);
+    			current = true;
+    		},
+
+    		p: function update(changed, new_ctx) {
+    			ctx = new_ctx;
+    			var calcblock_changes = {};
+    			if (changed.suffixNum || changed.calcblocks) calcblock_changes.name = ctx.suffixNum(ctx.index+1);
+    			if (changed.calcblocks) calcblock_changes.defaultShape = ctx.calcblock.default;
+    			calcblock.$set(calcblock_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(calcblock.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(calcblock.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div);
+    			}
+
+    			destroy_component(calcblock);
+    		}
+    	};
+    }
+
+    function create_fragment$1(ctx) {
+    	var div3, div2, each_blocks = [], each_1_lookup = new Map(), t0, a0, t2, div1, div0, span0, t4, input, t5, span1, t6, sup, t8, a1, current, dispose;
+
+    	var each_value = ctx.calcblocks;
+
+    	const get_key = ctx => ctx.calcblock.id;
+
+    	for (var i = 0; i < each_value.length; i += 1) {
+    		let child_ctx = get_each_context(ctx, each_value, i);
+    		let key = get_key(child_ctx);
+    		each_1_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
+    	}
+
+    	return {
+    		c: function create() {
+    			div3 = element("div");
+    			div2 = element("div");
+
+    			for (i = 0; i < each_blocks.length; i += 1) each_blocks[i].c();
+
+    			t0 = space();
+    			a0 = element("a");
+    			a0.textContent = "Add Shape";
+    			t2 = space();
+    			div1 = element("div");
+    			div0 = element("div");
+    			span0 = element("span");
+    			span0.textContent = "=";
+    			t4 = space();
+    			input = element("input");
+    			t5 = space();
+    			span1 = element("span");
+    			t6 = text("m");
+    			sup = element("sup");
+    			sup.textContent = "2";
+    			t8 = space();
+    			a1 = element("a");
+    			a1.textContent = "Buy Turf Online";
+    			attr(a0, "class", "button button__add-shape");
+    			attr(a0, "href", "#");
+    			add_location(a0, file$1, 8, 2, 324);
+    			attr(span0, "class", "total__equals svelte-1x4nxem");
+    			add_location(span0, file$1, 13, 4, 520);
+    			input.disabled = true;
+    			attr(input, "class", "total__value svelte-1x4nxem");
+    			add_location(input, file$1, 14, 4, 562);
+    			add_location(sup, file$1, 15, 33, 657);
+    			attr(span1, "class", "total__metric");
+    			add_location(span1, file$1, 15, 4, 628);
+    			attr(div0, "class", "flex items-center total svelte-1x4nxem");
+    			add_location(div0, file$1, 12, 3, 477);
+    			attr(a1, "class", "et_pb_button button");
+    			attr(a1, "href", "#");
+    			add_location(a1, file$1, 17, 3, 692);
+    			attr(div1, "class", "flex items-center total-wrapper svelte-1x4nxem");
+    			add_location(div1, file$1, 11, 2, 427);
+    			attr(div2, "class", "calculator-wrap svelte-1x4nxem");
+    			add_location(div2, file$1, 1, 1, 17);
+    			attr(div3, "id", "app");
+    			add_location(div3, file$1, 0, 0, 0);
+
+    			dispose = [
+    				listen(a0, "click", prevent_default(ctx.addShape)),
+    				listen(input, "input", ctx.input_input_handler)
+    			];
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, div3, anchor);
+    			append(div3, div2);
+
+    			for (i = 0; i < each_blocks.length; i += 1) each_blocks[i].m(div2, null);
+
+    			append(div2, t0);
+    			append(div2, a0);
+    			append(div2, t2);
+    			append(div2, div1);
+    			append(div1, div0);
+    			append(div0, span0);
+    			append(div0, t4);
+    			append(div0, input);
+
+    			set_input_value(input, ctx.total);
+
+    			append(div0, t5);
+    			append(div0, span1);
+    			append(span1, t6);
+    			append(span1, sup);
+    			append(div1, t8);
+    			append(div1, a1);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			const each_value = ctx.calcblocks;
+
+    			group_outros();
+    			each_blocks = update_keyed_each(each_blocks, changed, get_key, 1, ctx, each_value, each_1_lookup, div2, outro_and_destroy_block, create_each_block, t0, get_each_context);
+    			check_outros();
+
+    			if (changed.total && (input.value !== ctx.total)) set_input_value(input, ctx.total);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			for (var i = 0; i < each_value.length; i += 1) transition_in(each_blocks[i]);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			for (i = 0; i < each_blocks.length; i += 1) transition_out(each_blocks[i]);
+
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div3);
+    			}
+
+    			for (i = 0; i < each_blocks.length; i += 1) each_blocks[i].d();
+
+    			run_all(dispose);
+    		}
+    	};
+    }
+
+    function instance$1($$self, $$props, $$invalidate) {
+    	let total = 0;
+    	
+    	const addShape = () => {
+    		let newBlock = {
+    			id: generateUID()
+    		};
+    		console.log(newBlock);
+    		$$invalidate('calcblocks', calcblocks = [...calcblocks, newBlock]);
+    	};
+    	
+        const removeShape = (index) => {
+    		console.log(index);
+          	$$invalidate('calcblocks', calcblocks = calcblocks.filter((calcblock, i) => i !== index));
+    	};
+    	
+        const calc = (e) => {
+    		console.log('test');
+          $$invalidate('total', total += e.detail);
+    	};
+    	
+        const reCalc = (e) => {
+          $$invalidate('total', total -= e.detail);
+    	};
+    	
+    	const suffixNum = (i) => {
+    		var j = i % 10,
+    			k = i % 100;
+    		if (j == 1 && k != 11) {
+    			return i + "st";
+    		}
+    		if (j == 2 && k != 12) {
+    			return i + "nd";
+    		}
+    		if (j == 3 && k != 13) {
+    			return i + "rd";
+    		}
+    		return i + "th";
+    	};
+
+    	const generateUID = () => {
+    		return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    			(c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    		)
+    	};
+
+    	function removeshape_handler({ index }) {
+    		return removeShape(index);
+    	}
+
+    	function input_input_handler() {
+    		total = this.value;
+    		$$invalidate('total', total);
+    	}
+
+    	let calcblocks;
+
+    	$$invalidate('calcblocks', calcblocks = [
+    					{ id: generateUID(), default: 'square' },
+    					{ id: generateUID(), default: 'triangle' },
+    					{ id: generateUID(), default: 'circle' },
+    					{ id: generateUID(), default: 'arch' }
+    				]);
+
+    	return {
+    		total,
+    		addShape,
+    		removeShape,
+    		calc,
+    		reCalc,
+    		suffixNum,
+    		calcblocks,
+    		removeshape_handler,
+    		input_input_handler
+    	};
+    }
+
+    class App extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, []);
+    	}
+    }
+
+    var app = new App({
+    	target: document.body
+    });
+
+    return app;
+
+}());
 //# sourceMappingURL=bundle.js.map

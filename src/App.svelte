@@ -22,7 +22,7 @@
 </div>
 
 <script>
-import CalcBlock from './components/CalcBlocks.svelte'
+import CalcBlock from './components/CalcBlock.svelte'
 
 	let total = 0;
 
