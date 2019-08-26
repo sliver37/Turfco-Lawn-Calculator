@@ -2,7 +2,7 @@
 	<div class="calculator-wrap">
 		{#each calcblocks as calcblock, index (calcblock.id)}
 			<div class="block-wrap">
-				<CalcBlock on:calc="{calc}" on:recalc="{reCalc}" on:removeshape="{() => removeShape(index)}" name="{suffixNum(index+1)}" defaultShape="{calcblock.default}" />
+				<CalcBlock on:calc="{calc}" on:recalc="{reCalc}" on:removeshape="{() => removeShape(index)}" name="{suffixNum(index+1)}" totalShapeCount="{calcblocks.length}" defaultShape="{calcblock.default}" />
 			</div>
 		{/each}
 
@@ -12,7 +12,10 @@
 		<div class="flex items-center total-wrapper">
 			<div class="flex items-center total">
 				<span class="total__equals">=</span>
-				<input disabled class="total__value" bind:value="{total}" />
+				<div class="flex items-center total__value-box flex-grow-1">
+					<span class="total__text flex-grow-1">Total</span>
+					<span class="total__value">{total}</span>
+				</div>				
 				<span class="total__metric">m<sup>2</sup></span>
 			</div>
 			<a class="et_pb_button button" href="#">Buy Turf Online</a>
@@ -28,9 +31,6 @@ import CalcBlock from './components/CalcBlock.svelte'
 
 	$: calcblocks = [
 			{ id: generateUID(), default: 'square' },
-			{ id: generateUID(), default: 'triangle' },
-			{ id: generateUID(), default: 'circle' },
-			{ id: generateUID(), default: 'arch' }
 		]
 	
 	const addShape = () => {
@@ -48,11 +48,11 @@ import CalcBlock from './components/CalcBlock.svelte'
 	
     const calc = (e) => {
 		console.log('test')
-      total += e.detail
+      total += parseFloat(e.detail)
 	}
 	
     const reCalc = (e) => {
-      total -= e.detail
+      total -= parseFloat(e.detail)
 	}
 	
 	const suffixNum = (i) => {
@@ -90,8 +90,16 @@ import CalcBlock from './components/CalcBlock.svelte'
 	margin-right: 10px;
 }
 
+
+
 .total__value {
 	margin-right: 10px;
+}
+
+.total__text {
+	text-align: left;
+	font-size: 16px;
+	font-weight: bold;
 }
 
 .calculator-wrap {

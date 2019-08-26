@@ -1,5 +1,5 @@
 <div class="w-full">
-	<h2 class="flex"><span class="step-number">{stepNumber}.</span><span class="step-text">Choose your {name} shape to calculate.</span> <a class="delete-shape" href="#" on:click|preventDefault="{removeShape}">X</a></h2> 
+	<h2 class="flex"><span class="step-number">{stepNumber}.</span><span class="step-text">Choose your {name} shape to calculate.</span> {#if totalShapeCount > 1}<a class="delete-shape" href="#" on:click|preventDefault="{removeShape}">X</a>{/if}</h2> 
 
     <ul class="selection-wrap list-unstyled">
         <li on:click|preventDefault="{() => changeSelection('square')}" class="selection-item square {control === 'square' ? 'active' : ''}">
@@ -46,7 +46,7 @@
         {/if}
         {#if localTotal}
             <div v-if="localTotal" class="flex items-center totalBar">
-                <span class="local-total">{localTotal}m<sup>2</sup></span>
+                <span class="local-total total__value-box">{localTotal}m<sup>2</sup></span>
                 <a class="button" href="#" on:click|preventDefault="{reCalc}">Re-calculate</a>
             </div>
         {/if}
@@ -54,56 +54,57 @@
 </div>
 
 <script>
-import {onMount, createEventDispatcher} from 'svelte';
+import {onMount, createEventDispatcher} from 'svelte'
     
-    const dispatch = createEventDispatcher();
-    export let name;
-    export let defaultShape;
+    const dispatch = createEventDispatcher()
+    export let name
+    export let defaultShape
+    export let totalShapeCount
 
-    $: stepNumber = parseInt(name);
+    $: stepNumber = parseInt(name)
 
-    let localTotal = 0;
-    let width = 0;
-    let height = 0;
-    let diameter = 0;
-    let radius = 0;
-    let pie = 3.14; //yummie
-    let control = '';
+    let localTotal = 0
+    let width = 0
+    let height = 0
+    let diameter = 0
+    let radius = 0
+    let pie = 3.14 //yummie
+    let control = ''
 
     const calcSimple = () => {
 
         if(checkNum(width) && checkNum(height)){
-            let res = parseFloat(width*height); // calculate result
+            let res = (width*height).toFixed(2); // calculate result
             dispatch('calc', res)
-            localTotal = res;
+            localTotal = res
         }
         else{
-            alert('Please give numeric value');
+            alert('Please give numeric value')
         }
     }
 
     const calcDiam = () => {
 
         if(checkNum(diameter)){
-            let res = parseFloat(pie*(diameter/2))
+            let res = (pie*(diameter/2)).toFixed(2);
             dispatch('calc', res)
-            localTotal = res;
+            localTotal = res
         }
         else{
-            alert('Please give numeric value');
+            alert('Please give numeric value')
         }
     }
 
     const calcRad = () => {
 
         if(checkNum(radius)){
-            let res = parseFloat((pie*(radius*radius))/2); // calculate result
+            let res = ((pie*(radius*radius))/2).toFixed(2) // calculate result
             dispatch('calc', res)
-            localTotal = res;
+            localTotal = res
         }
 
         else{
-            alert('Please give numeric value');
+            alert('Please give numeric value')
         }
     }
 
@@ -113,29 +114,29 @@ import {onMount, createEventDispatcher} from 'svelte';
     }
 
     const reCalc = () => {
-        dispatch('recalc', localTotal);
-        localTotal = 0;
+        dispatch('recalc', localTotal)
+        localTotal = 0
     }
 
     const removeShape = () => {
-        let prompt = window.confirm(`Are you sure you want to remove shape ${stepNumber}?`);          
+        let prompt = window.confirm(`Are you sure you want to remove shape ${stepNumber}?`)         
         
         if (prompt) {
-            reCalc();
+            reCalc()
             dispatch('removeshape')    
         }    
     }
 
     const changeSelection = (shape) => {
         if (localTotal) {
-            let prompt = window.confirm('Are you sure? This will remove this shapes calculation');          
+            let prompt = window.confirm('Are you sure? This will remove this shapes calculation')        
             if (prompt) {
                 control = shape
                 reCalc()
-                width = 0;
-                height = 0;
-                diameter = 0;
-                radius = 0;
+                width = 0
+                height = 0
+                diameter = 0
+                radius = 0
             } 
         } else {
             control = shape    
@@ -250,7 +251,6 @@ import {onMount, createEventDispatcher} from 'svelte';
 }
 
 .local-total {
-    padding: 0 20px 0 0;
     flex-grow: 1;
     flex-basis: 50%;
     flex-shrink: 0;
