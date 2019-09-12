@@ -1,4 +1,4 @@
-<div id="app">
+<div id="app-calculator">
 	<div class="calculator-wrap">
 		{#each calcblocks as calcblock, index (calcblock.id)}
 			<div class="block-wrap">
@@ -18,7 +18,7 @@
 				</div>				
 				<span class="total__metric">m<sup>2</sup></span>
 			</div>
-			<a class="et_pb_button button" href="#">Buy Turf Online</a>
+			<a class="et_pb_button" href="{dataUrl}">Buy Turf Online</a>
 		</div>	
 
 	</div>    
@@ -29,13 +29,18 @@ import CalcBlock from './components/CalcBlock.svelte'
 
 	let total = 0;
 
+	let dataUrl = document.getElementById('lawn-calculator').getAttribute('data-url');
+
+	console.log('data-url', dataUrl);
+
 	$: calcblocks = [
 			{ id: generateUID(), default: 'square' },
 		]
 	
 	const addShape = () => {
 		let newBlock = {
-			id: generateUID()
+			id: generateUID(),
+			default: 'square'
 		}
 		console.log(newBlock)
 		calcblocks = [...calcblocks, newBlock]
@@ -47,12 +52,13 @@ import CalcBlock from './components/CalcBlock.svelte'
 	}
 	
     const calc = (e) => {
-		console.log('test')
-      total += parseFloat(e.detail)
+		let result = parseFloat(e.detail);
+      	total += result
 	}
 	
     const reCalc = (e) => {
-      total -= parseFloat(e.detail)
+		let result = parseFloat(e.detail);
+      	total -= result
 	}
 	
 	const suffixNum = (i) => {
@@ -82,6 +88,7 @@ import CalcBlock from './components/CalcBlock.svelte'
 .total {
 	font-size: 20px;
 	flex-grow: 1;
+	padding-right: 2rem;
 }
 
 .total__equals {
@@ -89,8 +96,6 @@ import CalcBlock from './components/CalcBlock.svelte'
 	font-size: 24px; 
 	margin-right: 10px;
 }
-
-
 
 .total__value {
 	margin-right: 10px;
@@ -105,7 +110,7 @@ import CalcBlock from './components/CalcBlock.svelte'
 .calculator-wrap {
 	padding: 20px;
 	background: #e9e9e9;
-	max-width: 620px;
+	max-width: 800px;
 	margin: 0 auto;  
 }
 

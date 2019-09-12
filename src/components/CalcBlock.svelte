@@ -26,21 +26,21 @@
     <div class="control-wrap">
         {#if control === 'square' && !localTotal  || control === 'triangle' && !localTotal}
             <div class="flex items-center simple-calc">
-                <input name="width" bind:value="{width}" />
+                <input name="width" placeholder="Width" bind:value="{width}" />
                 <span class="divider">X</span>
-                <input name="height" bind:value="{height}" />
+                <input name="height" placeholder="Height" bind:value="{height}" />
                 <a class="button" on:click|preventDefault="{calcSimple}" href="#">Add to Total</a>
             </div>
         {/if}
         {#if control === 'circle' && !localTotal}
             <div class="flex items-center diameter-calc">
-                <input name="diameter" bind:value="{diameter}" />
+                <input name="diameter" placeholder="Diameter" bind:value="{diameter}" />
                 <a class="button" on:click|preventDefault="{calcDiam}" href="#">Add to Total</a>
             </div>
         {/if}
         {#if control === 'arch' && !localTotal}
             <div class="flex items-center radius-calc">
-                <input name="radius" bind:value="{radius}" />
+                <input name="radius" placeholder="Radius" bind:value="{radius}" />
                 <a class="button" on:click|preventDefault="{calcRad}" href="#">Add to Total</a>
             </div>
         {/if}
@@ -64,17 +64,20 @@ import {onMount, createEventDispatcher} from 'svelte'
     $: stepNumber = parseInt(name)
 
     let localTotal = 0
-    let width = 0
-    let height = 0
-    let diameter = 0
-    let radius = 0
+    let width = null
+    let height = null
+    let diameter = null
+    let radius = null
     let pie = 3.14 //yummie
     let control = ''
 
     const calcSimple = () => {
 
         if(checkNum(width) && checkNum(height)){
-            let res = (width*height).toFixed(2); // calculate result
+            let res = (width*height) // calculate result
+            res = control === 'triangle' ? res/2 : res
+            res = res.toFixed(1)
+
             dispatch('calc', res)
             localTotal = res
         }
@@ -86,7 +89,8 @@ import {onMount, createEventDispatcher} from 'svelte'
     const calcDiam = () => {
 
         if(checkNum(diameter)){
-            let res = (pie*(diameter/2)).toFixed(2);
+            let res = (pie*(diameter/2)).toFixed(1);
+
             dispatch('calc', res)
             localTotal = res
         }
@@ -98,7 +102,8 @@ import {onMount, createEventDispatcher} from 'svelte'
     const calcRad = () => {
 
         if(checkNum(radius)){
-            let res = ((pie*(radius*radius))/2).toFixed(2) // calculate result
+            let res = ((pie*(radius*radius))/2).toFixed(1) // calculate result
+
             dispatch('calc', res)
             localTotal = res
         }
@@ -133,10 +138,10 @@ import {onMount, createEventDispatcher} from 'svelte'
             if (prompt) {
                 control = shape
                 reCalc()
-                width = 0
-                height = 0
-                diameter = 0
-                radius = 0
+                width = null
+                height = null
+                diameter = null
+                radius = null
             } 
         } else {
             control = shape    
@@ -188,10 +193,12 @@ import {onMount, createEventDispatcher} from 'svelte'
     display: flex;
     flex-wrap: wrap;
     margin: 20px -10px;
+    padding: 0;
     justify-content: center;
 }
 
 .selection-item {
+    display: block !important;
     width: 100px;
     height: 100px;
     padding: 0 10px 20px;
@@ -199,6 +206,11 @@ import {onMount, createEventDispatcher} from 'svelte'
     flex-basis: 25%;
     box-sizing: border-box;
     cursor: pointer;
+    margin-bottom: 0;
+}
+
+.selection-item:before {
+    display: none !important;
 }
 
 .selection-item .shape-inner {
