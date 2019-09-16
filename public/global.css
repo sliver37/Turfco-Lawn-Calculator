@@ -1,13 +1,18 @@
+#lawn-calculator {
+    margin-top: 2rem;
+}
+
 .lawn-calculator-wrapper .shape-instruction-box {
     width: 100%;
 }
 
 .lawn-calculator-wrapper .shape-instruction-box.col-2 {
-    width: 50%;
+    width: 100%;
 }
 
 .shape-instruction-row.flex {
     margin: 0 -20px;
+    flex-wrap: wrap;
 }
 
 .shape-instruction-box {
@@ -76,6 +81,12 @@
     width: 100%;
 }
 
+.total__value-box {
+	background: white;
+	padding: 10px 16px;
+	margin-right: 10px;
+}
+
 #app-calculator input {
     padding: 12px 16px;
     margin-bottom: 0;
@@ -85,14 +96,39 @@
     font-size: 16px;
 }
 
+#app-calculator .button {
+    display: inline-block;
+    color: white;
+    background: #12994d;
+    padding: 12px 40px;
+    margin-left: 0;
+    white-space: nowrap;
+    flex-grow: 1;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
 #app-calculator .button.button__add-shape {
 	display: block;
-	margin: 40px 0 30px;
+	margin: 2rem 0;
 	width: 100%;
 }
 
-.total__value-box {
-	background: white;
-	padding: 10px 16px;
-	margin-right: 10px;
+#app-calculator .button, #app-calculator .et_pb_button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+@media all and (min-width: 768px) {
+    .lawn-calculator-wrapper .shape-instruction-box.col-2 {
+        width: 50%;
+    }
+    #app-calculator .button {
+        margin-left: 20px;
+    }
+
+    #app-calculator .button, #app-calculator .et_pb_button {
+        width: auto;
+    }    
 }

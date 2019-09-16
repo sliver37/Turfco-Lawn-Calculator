@@ -85,10 +85,18 @@ import CalcBlock from './components/CalcBlock.svelte'
 </script>
 
 <style>
+
+
+.total-wrapper {
+    flex-direction: column;
+}
+
 .total {
 	font-size: 20px;
 	flex-grow: 1;
 	padding-right: 2rem;
+	width: 100%;
+	margin-bottom: 2rem;
 }
 
 .total__equals {
@@ -114,8 +122,11 @@ import CalcBlock from './components/CalcBlock.svelte'
 	margin: 0 auto;  
 }
 
+.calculator-wrap .block-wrap + .block-wrap {
+	margin-top: 3rem;
+}
+
 .block-wrap {
-	margin-bottom: 30px;
 	align-items: center;
 	display: flex;
 	flex-direction: column;
@@ -125,4 +136,15 @@ import CalcBlock from './components/CalcBlock.svelte'
 	margin-bottom: 0;
 }
 
-  </style>
+@media all and (min-width: 768px) {	
+	.total {
+		width: auto;
+		margin-bottom: 0;
+	}
+
+	.total-wrapper {
+		flex-direction: row;
+	}
+}
+
+</style>

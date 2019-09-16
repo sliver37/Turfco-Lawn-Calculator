@@ -165,6 +165,10 @@ import {onMount, createEventDispatcher} from 'svelte'
     padding-right: 20px;
 }
 
+.step-text {
+    font-size: 2.4rem;
+} 
+
 .delete-shape {
     background: #545454;
     color: white;
@@ -192,7 +196,7 @@ import {onMount, createEventDispatcher} from 'svelte'
 .selection-wrap {
     display: flex;
     flex-wrap: wrap;
-    margin: 20px -10px;
+    margin: 20px -10px 0;
     padding: 0;
     justify-content: center;
 }
@@ -203,7 +207,7 @@ import {onMount, createEventDispatcher} from 'svelte'
     height: 100px;
     padding: 0 10px 20px;
     position: relative;
-    flex-basis: 25%;
+    flex-basis: 50%;
     box-sizing: border-box;
     cursor: pointer;
     margin-bottom: 0;
@@ -266,6 +270,30 @@ import {onMount, createEventDispatcher} from 'svelte'
     flex-grow: 1;
     flex-basis: 50%;
     flex-shrink: 0;
+}
+
+.control-wrap > div {
+    flex-direction: column;
+}
+
+.control-wrap .button {
+    margin-top: 2rem;
+}
+
+
+@media all and (min-width: 768px) {
+    .control-wrap > div {
+        flex-direction: row;
+    }   
+        
+    .control-wrap .button {
+        margin-top: 0;
+    }
+
+    
+    .selection-item {
+        flex-basis: 25%;
+    }
 }
 
 </style>
