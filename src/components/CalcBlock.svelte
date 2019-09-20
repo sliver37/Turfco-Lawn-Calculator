@@ -35,13 +35,17 @@ import Diameter from './calc-controls/Diameter.svelte'
 import Radius from './calc-controls/Radius.svelte'
     
     const dispatch = createEventDispatcher()
+
+    // Props
     export let blockid
     export let name
     export let defaultShape
     export let totalShapeCount
 
+    // Reactive Computed
     $: stepNumber = parseInt(name)
 
+    // Define your shapes and which controls will be used for calculation
     let shapes = [
         {
             name: 'square',
@@ -61,18 +65,16 @@ import Radius from './calc-controls/Radius.svelte'
         },
     ]
 
+    // This is the total of this particular block
     let localTotal = 0
-
     const controlCalc = (res) => {
         localTotal = res.detail;
         return dispatch('calc', localTotal)
     }
-
     const reCalc = () => {
         dispatch('recalc', localTotal)
         localTotal = 0
     }
-
     const removeShape = () => {
         let prompt = window.confirm(`Are you sure you want to remove shape ${stepNumber}?`)         
         
@@ -96,10 +98,8 @@ import Radius from './calc-controls/Radius.svelte'
             } 
         } else {
             control = shape.name   
-        }  
-                    
+        }              
     } 
-
     onMount(() => {
         if (name) {
             control = defaultShape

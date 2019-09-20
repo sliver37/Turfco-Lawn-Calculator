@@ -1287,8 +1287,11 @@ var app = (function () {
     	
         
         const dispatch = createEventDispatcher();
+
+        // Props
         let { blockid, name, defaultShape, totalShapeCount } = $$props;
 
+        // Define your shapes and which controls will be used for calculation
         let shapes = [
             {
                 name: 'square',
@@ -1308,18 +1311,16 @@ var app = (function () {
             },
         ];
 
+        // This is the total of this particular block
         let localTotal = 0;
-
         const controlCalc = (res) => {
             $$invalidate('localTotal', localTotal = res.detail);
             return dispatch('calc', localTotal)
         };
-
         const reCalc = () => {
             dispatch('recalc', localTotal);
             $$invalidate('localTotal', localTotal = 0);
         };
-
         const removeShape = () => {
             let prompt = window.confirm(`Are you sure you want to remove shape ${stepNumber}?`);         
             
@@ -1343,10 +1344,8 @@ var app = (function () {
                 } 
             } else {
                 $$invalidate('control', control = shape.name);   
-            }  
-                        
+            }              
         }; 
-
         onMount(() => {
             if (name) {
                 $$invalidate('control', control = defaultShape);
@@ -1699,27 +1698,28 @@ var app = (function () {
     function instance$4($$self, $$props, $$invalidate) {
     	
 
-    	let total = 0;
-
+    	// This is passed in via wordpress to keep "Buy Turf Online" button URL correct
     	let dataUrl = document.getElementById('lawn-calculator').getAttribute('data-url');
-    	
+
+    	let calcblocks = [
+    		{ id: generateUID(), default: 'square' },
+    	];	
     	const addShape = () => {
     		let newBlock = {
     			id: generateUID(),
     			default: 'square'
     		};
     		$$invalidate('calcblocks', calcblocks = [...calcblocks, newBlock]);
-    	};
-    	
+    	};	
         const removeShape = (index) => {
           	$$invalidate('calcblocks', calcblocks = calcblocks.filter((calcblock, i) => i !== index));
     	};
     	
+    	let total = 0;
         const calc = (e) => {
     		let result = parseFloat(e.detail);
           	$$invalidate('total', total += result);
-    	};
-    	
+    	};	
         const reCalc = (e) => {
     		let result = parseFloat(e.detail);
           	$$invalidate('total', total -= result);
@@ -1729,20 +1729,14 @@ var app = (function () {
     		return removeShape(index);
     	}
 
-    	let calcblocks;
-
-    	$$invalidate('calcblocks', calcblocks = [
-    				{ id: generateUID(), default: 'square' },
-    			]);
-
     	return {
-    		total,
     		dataUrl,
+    		calcblocks,
     		addShape,
     		removeShape,
+    		total,
     		calc,
     		reCalc,
-    		calcblocks,
     		removeshape_handler
     	};
     }

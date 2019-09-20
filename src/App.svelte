@@ -26,31 +26,28 @@ import CalcBlock from './components/CalcBlock.svelte'
 import { generateUID } from './components/functions/genID'
 import { suffixNum } from './components/functions/numberSuffix'
 
-	let total = 0;
-
+	// This is passed in via wordpress to keep "Buy Turf Online" button URL correct
 	let dataUrl = document.getElementById('lawn-calculator').getAttribute('data-url');
 
-	$: calcblocks = [
+	let calcblocks = [
 		{ id: generateUID(), default: 'square' },
-	]
-	
+	]	
 	const addShape = () => {
 		let newBlock = {
 			id: generateUID(),
 			default: 'square'
 		}
 		calcblocks = [...calcblocks, newBlock]
-	}
-	
+	}	
     const removeShape = (index) => {
       	calcblocks = calcblocks.filter((calcblock, i) => i !== index);
 	}
 	
+	let total = 0;
     const calc = (e) => {
 		let result = parseFloat(e.detail);
       	total += result
-	}
-	
+	}	
     const reCalc = (e) => {
 		let result = parseFloat(e.detail);
       	total -= result
