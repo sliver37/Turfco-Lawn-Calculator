@@ -37,7 +37,6 @@
 
 .shape-instruction-description {
     margin-bottom: 30px;
-    font-weight: bold;
 }
 
 .shape-instruction-label {
@@ -47,18 +46,25 @@
     color: white;
     background: black;
     padding: 8px 16px;
+    font-weight: bold;
 }
 
 .shape-instruction-pic {
     margin: auto;
     object-fit: contain;
+    max-height: 220px;
+    padding: 0px 2rem;
 }
 
 #app-calculator {
 	text-align: center;
 	color: #2c3e50;
 	margin-top: 20px 40px;
-  }
+}
+
+.text-black {
+    color: black;
+}
 
 .flex {
     display: flex;
@@ -110,7 +116,7 @@
 
 #app-calculator .button.button__add-shape {
 	display: block;
-	margin: 2rem 0;
+	margin: 0;
 	width: 100%;
 }
 
