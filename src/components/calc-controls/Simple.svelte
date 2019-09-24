@@ -21,7 +21,7 @@ import { checkNum } from '../functions/checkNumber'
         if(checkNum(width) && checkNum(height)){
             console.log(shape)
             let res = (width*height) // calculate result
-            res = shape.name === 'triangle' ? res/2 : res
+            res = shape === 'triangle' ? res/2 : res
             res = res.toFixed(1)
 
             dispatch('calc', res)

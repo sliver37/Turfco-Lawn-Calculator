@@ -15,7 +15,7 @@
 
         {#each shapes as shape (blockid + shape.name)}
             {#if shape.name === control && !localTotal}
-                <svelte:component shape="control" this={shape.controls} on:calc={controlCalc} />
+                <svelte:component shape="{shape.name}" this={shape.controls} on:calc={controlCalc} />
             {/if}
 	    {/each}
 
